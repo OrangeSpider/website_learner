@@ -1,0 +1,75 @@
+1. 🏠 Home Page (/)
+Purpose: Enter URL to start quiz
+Components:
+
+URL Input Field
+
+“Generate Quiz” Button
+
+Loading indicator
+
+plaintext
+Kopieren
+Bearbeiten
++--------------------------------------------------+
+| 📚 Learn from any URL                            |
+|                                                  |
+|  [ https://example.com/article ]   [ Generate ]  |
+|                                                  |
+|                                                  |
++--------------------------------------------------+
+
+
+2. ❓ Quiz Page (/quiz)
+Purpose: Show quiz questions
+Components:
+
+Question #1/5
+
+Question text
+
+Multiple choice answers
+
+Next button
+
+plaintext
+Kopieren
+Bearbeiten
++--------------------------------------------------+
+| Question 1 of 5                                  |
+|                                                  |
+| What is the main idea of the article?            |
+|                                                  |
+| ( ) A. It's about AI                             |
+| ( ) B. It's about sports                         |
+| ( ) C. It's about gardening                      |
+| ( ) D. None of the above                         |
+|                                                  |
+|                          [ Next → ]              |
++--------------------------------------------------+
+
+
+3. 🏁 Results Page (/result)
+Purpose: Show score and correct answers
+Components:
+
+Score Summary
+
+List of questions with correct/your answers
+
+“Try Another URL” Button
+
+plaintext
+Kopieren
+Bearbeiten
++--------------------------------------------------+
+| 🎉 You scored 4 out of 5!                        |
+|                                                  |
+| Q1: What is the topic?                           |
+| ✔️ Correct: A — Your answer: A                   |
+|                                                  |
+| Q2: When did X happen?                           |
+| ❌ Correct: C — Your answer: B                   |
+|                                                  |
+| [ Try Another URL ]                              |
++--------------------------------------------------+
