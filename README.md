@@ -26,3 +26,16 @@ history storage.
    cd frontend
    npm install
    ```
+
+## Deploying to GitHub Pages
+
+1. Make sure the `base` option in `frontend/vite.config.ts` matches your
+   repository name. For this project it is set to `/learning-quiz-ai/`.
+2. Build and publish the site:
+   ```bash
+   cd frontend
+   npm run deploy
+   ```
+   The command uses [gh-pages](https://github.com/tschaub/gh-pages) to push the
+   contents of the `dist` folder to the `gh-pages` branch so it can be served on
+   GitHub Pages.
