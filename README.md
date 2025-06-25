@@ -1,4 +1,4 @@
-# learning-quiz-ai
+# website_learner
 
 Learning Quiz AI is a personal web tool that turns any URL into a quiz powered by AI.
 It consists of a React frontend and a FastAPI backend. The backend will use OpenAI to
@@ -30,7 +30,7 @@ history storage.
 ## Deploying to GitHub Pages
 
 1. Make sure the `base` option in `frontend/vite.config.ts` matches your
-   repository name. For this project it is set to `/learning-quiz-ai/`.
+   repository name. For this project it is set to `/website_learner/`.
 2. Build and publish the site:
    ```bash
    cd frontend
@@ -39,3 +39,6 @@ history storage.
    The command uses [gh-pages](https://github.com/tschaub/gh-pages) to push the
    contents of the `dist` folder to the `gh-pages` branch so it can be served on
    GitHub Pages.
+
+   Once published, your site will be available at:
+   `https://<your-github-username>.github.io/website_learner/`
