@@ -26,6 +26,14 @@ history storage.
    cd frontend
    npm install
    ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   Open <http://localhost:5173/> in your browser.
+
+The production build can be tested with `npm run build` followed by
+`npm run preview`.
 
 ## Deploying to GitHub Pages
 
