@@ -23,7 +23,7 @@ export default function Quiz() {
   };
 
   return (
-    <div style={{ maxWidth: 600, margin: "0 auto", padding: 20 }}>
+    <div className="container">
       <h2>
         Question {step + 1} of {quiz.length}
       </h2>
@@ -37,7 +37,6 @@ export default function Quiz() {
                 name="option"
                 checked={choice === idx}
                 onChange={() => setChoice(idx)}
-                style={{ marginRight: "4px" }}
               />
               {opt}
             </label>

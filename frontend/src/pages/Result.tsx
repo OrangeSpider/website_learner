@@ -16,7 +16,7 @@ export default function Result() {
   );
 
   return (
-    <div style={{ maxWidth: 600, margin: "0 auto", padding: 20 }}>
+    <div className="container">
       <h1>
         🎉 You scored {score} out of {quiz.length}!
       </h1>

@@ -10,18 +10,15 @@ export default function Home() {
   };
 
   return (
-    <div style={{ maxWidth: 400, margin: "0 auto", padding: 20 }}>
+    <div className="container">
       <h1>📚 Learn from any URL</h1>
       <input
         type="text"
         placeholder="https://example.com/article"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
-        style={{ width: "100%", padding: "8px" }}
       />
-      <button onClick={handleStart} style={{ marginTop: 10 }}>
-        Generate
-      </button>
+      <button onClick={handleStart}>Generate</button>
     </div>
   );
 }
