@@ -26,7 +26,13 @@ history storage.
    cd frontend
    npm install
    ```
-3. Start the development server:
+3. Configure the backend URL by creating a `.env` file in the `frontend`
+   directory:
+   ```bash
+   echo "VITE_API_URL=http://localhost:8000" > .env
+   ```
+   Adjust the URL if your FastAPI server runs elsewhere.
+4. Start the development server:
    ```bash
    npm run dev
    ```

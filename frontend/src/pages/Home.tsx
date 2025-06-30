@@ -16,10 +16,12 @@ export default function Home() {
     setStep(2);
   };
 
+  const API_BASE = import.meta.env.VITE_API_URL || "";
+
   const handleStart = async () => {
     setError("");
     try {
-      const response = await fetch("http://localhost:8000/quiz", {
+      const response = await fetch(`${API_BASE}/quiz`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ api_key: apiKey, url }),
