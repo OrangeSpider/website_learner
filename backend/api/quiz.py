@@ -1,7 +1,13 @@
 from fastapi import APIRouter
 
+from ..models.quiz_models import QuizRequest, QuizResponse, QuizQuestion
+from ..services.quiz_generator import generate_quiz_from_url
+
 router = APIRouter()
 
-@router.get("/quiz")
-async def generate_quiz():
-    return {"quiz": []}
+
+@router.post("/quiz", response_model=QuizResponse)
+async def generate_quiz(req: QuizRequest) -> QuizResponse:
+    quiz_data = generate_quiz_from_url(req.api_key, req.url)
+    questions = [QuizQuestion(**q) for q in quiz_data]
+    return QuizResponse(questions=questions)
