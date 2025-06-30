@@ -26,12 +26,9 @@ history storage.
    cd frontend
    npm install
    ```
-3. Configure the backend URL by creating a `.env` file in the `frontend`
-   directory:
-   ```bash
-   echo "VITE_API_URL=http://localhost:8000" > .env
-   ```
-   Adjust the URL if your FastAPI server runs elsewhere.
+3. Copy `.env.example` to `.env` in the `frontend` directory and set
+   `VITE_API_URL` to the URL of your FastAPI backend if it runs on a different
+   host. Leaving it blank will make the frontend use a relative `/quiz` endpoint.
 4. Start the development server:
    ```bash
    npm run dev
