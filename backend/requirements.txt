@@ -1,4 +1,6 @@
 fastapi
 openai
 httpx
+requests
+beautifulsoup4
 pytest
