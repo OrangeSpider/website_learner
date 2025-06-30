@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { quiz } from "../quizData";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Question } from "../quizData";
 
 export default function Quiz() {
+  const { state } = useLocation() as { state: { quiz: Question[] } };
+  const quiz = state?.quiz || [];
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [choice, setChoice] = useState<number | null>(null);
@@ -18,7 +20,7 @@ export default function Quiz() {
     if (step + 1 < quiz.length) {
       setStep(step + 1);
     } else {
-      navigate("/result", { state: { answers: newAnswers } });
+      navigate("/result", { state: { answers: newAnswers, quiz } });
     }
   };
 

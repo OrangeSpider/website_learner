@@ -15,8 +15,14 @@ export default function Home() {
     setStep(2);
   };
 
-  const handleStart = () => {
-    navigate("/quiz");
+  const handleStart = async () => {
+    const response = await fetch("http://localhost:8000/quiz", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ api_key: apiKey, url }),
+    });
+    const data = await response.json();
+    navigate("/quiz", { state: { quiz: data.questions } });
   };
 
   return (
