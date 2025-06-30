@@ -35,6 +35,13 @@ history storage.
 The production build can be tested with `npm run build` followed by
 `npm run preview`.
 
+### Using your OpenAI API key
+
+When starting the app, you will be asked for your OpenAI API key on the home
+page. The key is stored in a browser cookie named `openai_key` that expires
+after seven days. This is intended for local development only and is not
+recommended for production use.
+
 ## Deploying to GitHub Pages
 
 1. Make sure the `base` option in `frontend/vite.config.ts` matches your
