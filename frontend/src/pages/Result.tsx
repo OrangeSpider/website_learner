@@ -1,14 +1,16 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { quiz } from "../quizData";
+import { Question } from "../quizData";
 
 interface LocationState {
   answers: number[];
+  quiz: Question[];
 }
 
 export default function Result() {
   const navigate = useNavigate();
   const { state } = useLocation() as { state: LocationState };
   const answers = state?.answers || [];
+  const quiz = state?.quiz || [];
 
   const score = answers.reduce(
     (acc, ans, idx) => (ans === quiz[idx].answer ? acc + 1 : acc),
