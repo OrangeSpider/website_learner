@@ -8,6 +8,7 @@ export default function Home() {
   const [url, setUrl] = useState("");
   const [apiKey, setApiKey] = useState(storedKey);
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const handleSaveKey = () => {
     if (!apiKey) return;
@@ -16,13 +17,27 @@ export default function Home() {
   };
 
   const handleStart = async () => {
-    const response = await fetch("http://localhost:8000/quiz", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ api_key: apiKey, url }),
-    });
-    const data = await response.json();
-    navigate("/quiz", { state: { quiz: data.questions } });
+    setError("");
+    try {
+      const response = await fetch("http://localhost:8000/quiz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ api_key: apiKey, url }),
+      });
+      if (!response.ok) {
+        const text = await response.text();
+        setError(`Error ${response.status}: ${text}`);
+        return;
+      }
+      const data = await response.json();
+      navigate("/quiz", { state: { quiz: data.questions } });
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unknown error occurred");
+      }
+    }
   };
 
   return (
@@ -53,6 +68,7 @@ export default function Home() {
           <button onClick={handleStart} disabled={!url}>
             Generate
           </button>
+          {error && <p className="error">{error}</p>}
         </>
       )}
     </div>
