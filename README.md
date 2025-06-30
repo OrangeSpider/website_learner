@@ -37,10 +37,11 @@ The production build can be tested with `npm run build` followed by
 
 ### Using your OpenAI API key
 
-When starting the app, you will be asked for your OpenAI API key on the home
-page. The key is stored in a browser cookie named `openai_key` that expires
-after seven days. This is intended for local development only and is not
-recommended for production use.
+When opening the app for the first time you will be prompted to enter your
+OpenAI API key. The key is stored in a browser cookie named `openai_key` that
+expires after seven days. If the cookie already exists, you will skip the key
+prompt and can immediately provide a URL. This is intended for local
+development only and is not recommended for production use.
 
 ## Deploying to GitHub Pages
 

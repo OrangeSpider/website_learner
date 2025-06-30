@@ -3,31 +3,52 @@ import { useState } from "react";
 import { setCookie, getCookie } from "../cookies";
 
 export default function Home() {
+  const storedKey = getCookie("openai_key") || "";
+  const [step, setStep] = useState(storedKey ? 2 : 1);
   const [url, setUrl] = useState("");
-  const [apiKey, setApiKey] = useState(getCookie("openai_key") || "");
+  const [apiKey, setApiKey] = useState(storedKey);
   const navigate = useNavigate();
 
-  const handleStart = () => {
+  const handleSaveKey = () => {
+    if (!apiKey) return;
     setCookie("openai_key", apiKey, 7);
+    setStep(2);
+  };
+
+  const handleStart = () => {
     navigate("/quiz");
   };
 
   return (
     <div className="container">
-      <h1>📚 Learn from any URL</h1>
-      <input
-        type="text"
-        placeholder="https://example.com/article"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="OpenAI API Key"
-        value={apiKey}
-        onChange={(e) => setApiKey(e.target.value)}
-      />
-      <button onClick={handleStart}>Generate</button>
+      {step === 1 && (
+        <>
+          <h1>Enter OpenAI API Key</h1>
+          <input
+            type="password"
+            placeholder="OpenAI API Key"
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+          />
+          <button onClick={handleSaveKey} disabled={!apiKey}>
+            Continue
+          </button>
+        </>
+      )}
+      {step === 2 && (
+        <>
+          <h1>📚 Learn from any URL</h1>
+          <input
+            type="text"
+            placeholder="https://example.com/article"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+          <button onClick={handleStart} disabled={!url}>
+            Generate
+          </button>
+        </>
+      )}
     </div>
   );
 }
