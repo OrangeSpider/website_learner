@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { setCookie, getCookie } from "../cookies";
 
+const API_URL = import.meta.env.VITE_API_URL || "";
+
 export default function Home() {
   const storedKey = getCookie("openai_key") || "";
   const [step, setStep] = useState(storedKey ? 2 : 1);
@@ -19,7 +21,7 @@ export default function Home() {
   const handleStart = async () => {
     setError("");
     try {
-      const response = await fetch("http://localhost:8000/quiz", {
+      const response = await fetch(`${API_URL}/quiz`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ api_key: apiKey, url }),

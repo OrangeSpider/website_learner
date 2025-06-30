@@ -31,6 +31,8 @@ history storage.
    npm run dev
    ```
    Open <http://localhost:5173/> in your browser.
+4. If your backend runs on a different host or port, set `VITE_API_URL` in
+   `frontend/.env` (see `frontend/.env.example`).
 
 The production build can be tested with `npm run build` followed by
 `npm run preview`.
