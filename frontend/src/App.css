@@ -59,3 +59,9 @@ button:hover {
   transform: scale(1.05);
   box-shadow: 0 0 10px #06b6d4;
 }
+
+.error {
+  margin-top: 10px;
+  color: #ff6b6b;
+  text-align: center;
+}
