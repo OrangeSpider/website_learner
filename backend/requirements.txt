@@ -3,4 +3,5 @@ openai
 httpx
 requests
 beautifulsoup4
+uvicorn
 pytest
