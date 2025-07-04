@@ -11,4 +11,5 @@ dependencies:
       - httpx
       - requests
       - beautifulsoup4
+      - uvicorn
       - pytest
