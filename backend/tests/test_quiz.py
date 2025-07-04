@@ -15,7 +15,7 @@ def test_generate_quiz_endpoint(monkeypatch):
 
     monkeypatch.setenv("OPENAI_API_KEY", "key")
 
-    def mock_generate(url: str, api_key: str | None = None):
+    def mock_generate(url: str):
         assert url == "http://example.com"
         return sample
 

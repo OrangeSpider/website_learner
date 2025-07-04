@@ -58,13 +58,8 @@ history storage.
 The production build can be tested with `npm run build` followed by
 `npm run preview`.
 
-### Using your OpenAI API key
+### OpenAI configuration
 
-When opening the app for the first time you will be prompted to enter your
-OpenAI API key. The key is stored in a browser cookie named `openai_key` that
-expires after seven days. If the cookie already exists, you will skip the key
-prompt and can immediately provide a URL. This is intended for local
-development only and is not recommended for production use. You may also set
-`OPENAI_API_KEY` in your shell so the backend has a default key without using
-the browser prompt.
+Set the `OPENAI_API_KEY` environment variable before starting the backend. The
+frontend no longer prompts for a key.
 
