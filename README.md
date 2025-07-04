@@ -43,8 +43,9 @@ history storage.
    npm install
    ```
 3. Configure the backend URL by creating a `.env` file in the `frontend`
-   directory. The frontend expects the `VITE_API_URL` variable to point to
-   your running FastAPI server:
+   directory. Set `VITE_API_URL` to the address of your FastAPI server.
+   During development the Vite dev server proxies `/api` requests to this
+   URL so the frontend can make relative API calls:
    ```bash
    echo "VITE_API_URL=http://localhost:8000" > .env
    ```
