@@ -7,7 +7,7 @@ import os
 from typing import Any
 
 import openai
-import requests
+import httpx
 from bs4 import BeautifulSoup
 
 
@@ -23,7 +23,7 @@ PROMPT = (
 
 def _fetch_page_text(url: str) -> str:
     """Return plain text content for the given URL."""
-    resp = requests.get(url)
+    resp = httpx.get(url)
     resp.raise_for_status()
     soup = BeautifulSoup(resp.text, "html.parser")
     return soup.get_text(separator=" ", strip=True)
