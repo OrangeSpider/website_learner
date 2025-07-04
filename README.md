@@ -14,7 +14,13 @@ history storage.
    conda env create -f environment.yml
    conda activate website_learner
    ```
-3. Run tests:
+3. Install the Supabase client library:
+   ```bash
+   pip install supabase
+   ```
+4. Configure Supabase connection settings by defining the `SUPABASE_URL` and
+   `SUPABASE_API_KEY` environment variables.
+5. Run tests:
    ```bash
    pytest
    ```
