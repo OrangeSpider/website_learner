@@ -24,6 +24,16 @@ history storage.
    ```bash
    pytest
    ```
+4. Set environment variables before starting the API server:
+   ```bash
+   export OPENAI_API_KEY=<your-openai-key>
+   export SUPABASE_URL=<your-supabase-url>       # used in later integrations
+   export SUPABASE_API_KEY=<your-supabase-api-key>
+   ```
+5. Launch the development server:
+   ```bash
+   uvicorn backend.main:app --reload
+   ```
 
 ### Frontend (React)
 1. Install Node.js (version 18 or later recommended).
@@ -33,7 +43,8 @@ history storage.
    npm install
    ```
 3. Configure the backend URL by creating a `.env` file in the `frontend`
-   directory:
+   directory. The frontend expects the `VITE_API_URL` variable to point to
+   your running FastAPI server:
    ```bash
    echo "VITE_API_URL=http://localhost:8000" > .env
    ```
@@ -53,5 +64,7 @@ When opening the app for the first time you will be prompted to enter your
 OpenAI API key. The key is stored in a browser cookie named `openai_key` that
 expires after seven days. If the cookie already exists, you will skip the key
 prompt and can immediately provide a URL. This is intended for local
-development only and is not recommended for production use.
+development only and is not recommended for production use. You may also set
+`OPENAI_API_KEY` in your shell so the backend has a default key without using
+the browser prompt.
 
