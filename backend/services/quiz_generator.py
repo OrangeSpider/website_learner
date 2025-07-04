@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from typing import Any
 
 import openai
@@ -28,12 +29,12 @@ def _fetch_page_text(url: str) -> str:
     return soup.get_text(separator=" ", strip=True)
 
 
-def generate_quiz_from_url(api_key: str, url: str) -> list[dict[str, Any]]:
+def generate_quiz_from_url(url: str, api_key: str | None = None) -> list[dict[str, Any]]:
     """Fetch the page and ask OpenAI to create quiz questions."""
 
     text = _fetch_page_text(url)
 
-    openai.api_key = api_key
+    openai.api_key = api_key or os.environ.get("OPENAI_API_KEY")
     messages = [
         {"role": "system", "content": "You generate quizzes from website content."},
         {"role": "user", "content": f"{PROMPT}\nContent:\n{text}"},

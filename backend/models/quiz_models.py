@@ -4,8 +4,8 @@ from pydantic import BaseModel
 class QuizRequest(BaseModel):
     """Parameters to generate a quiz from a URL."""
 
-    api_key: str
     url: str
+    api_key: str | None = None
 
 class QuizQuestion(BaseModel):
     question: str

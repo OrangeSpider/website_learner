@@ -8,6 +8,6 @@ router = APIRouter()
 
 @router.post("/quiz", response_model=QuizResponse)
 async def generate_quiz(req: QuizRequest) -> QuizResponse:
-    quiz_data = generate_quiz_from_url(req.api_key, req.url)
+    quiz_data = generate_quiz_from_url(req.url)
     questions = [QuizQuestion(**q) for q in quiz_data]
     return QuizResponse(questions=questions)
