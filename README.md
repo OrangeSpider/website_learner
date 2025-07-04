@@ -49,18 +49,3 @@ expires after seven days. If the cookie already exists, you will skip the key
 prompt and can immediately provide a URL. This is intended for local
 development only and is not recommended for production use.
 
-## Deploying to GitHub Pages
-
-1. Make sure the `base` option in `frontend/vite.config.ts` matches your
-   repository name. For this project it is set to `/website_learner/`.
-2. Build and publish the site:
-   ```bash
-   cd frontend
-   npm run deploy
-   ```
-   The command uses [gh-pages](https://github.com/tschaub/gh-pages) to push the
-   contents of the `dist` folder to the `gh-pages` branch so it can be served on
-   GitHub Pages.
-
-   Once published, your site will be available at:
-   `https://<your-github-username>.github.io/website_learner/`
