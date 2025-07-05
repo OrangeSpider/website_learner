@@ -2,7 +2,7 @@
 
 ## Environment
 - Python version: 3.11
-- NPM version: 11.4.2 (Node 18+ recommended)
+- Node.js version: 18 or newer (NPM 11.4.2)
 
 ## Testing
 - Run `pytest` from the repository root after making Python changes.
