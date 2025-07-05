@@ -1,9 +1,9 @@
 # website_learner
 
 Learning Quiz AI is a personal web tool that turns any URL into a quiz powered by AI.
-It consists of a React frontend and a FastAPI backend. The backend will use OpenAI to
-generate quiz questions from web content, while Supabase handles user accounts and
-history storage.
+It consists of a React frontend and a FastAPI backend. The backend uses the OpenAI
+`gpt-4o` model to generate multiple-choice questions from web content. A Supabase
+client is included for future user account and history storage features.
 
 ## Development Setup
 
@@ -24,13 +24,13 @@ history storage.
    ```bash
    pytest
    ```
-4. Set environment variables before starting the API server:
+6. Set environment variables before starting the API server:
    ```bash
    export OPENAI_API_KEY=<your-openai-key>
    export SUPABASE_URL=<your-supabase-url>       # used in later integrations
    export SUPABASE_API_KEY=<your-supabase-api-key>
    ```
-5. Launch the development server:
+7. Launch the development server:
    ```bash
    uvicorn backend.main:app --reload
    ```
@@ -56,8 +56,9 @@ history storage.
    ```
    Open <http://localhost:5173/> in your browser.
 
-The production build can be tested with `npm run build` followed by
-`npm run preview`.
+After making changes to the frontend code run `npm run build` to ensure it
+compiles successfully. You can preview the production build with `npm run
+preview`.
 
 ### OpenAI configuration
 
