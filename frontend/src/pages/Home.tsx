@@ -3,6 +3,8 @@ import { useState } from "react";
 
 export default function Home() {
   const [url, setUrl] = useState("");
+  const [numQuestions, setNumQuestions] = useState(5);
+  const [allowMultiple, setAllowMultiple] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -14,7 +16,11 @@ export default function Home() {
       const response = await fetch(`${API_BASE}/quiz`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({
+          url,
+          num_questions: numQuestions,
+          allow_multiple: allowMultiple,
+        }),
       });
       if (!response.ok) {
         const text = await response.text();
@@ -41,6 +47,24 @@ export default function Home() {
         value={url}
         onChange={(e) => setUrl(e.target.value)}
       />
+      <label>
+        Number of questions:
+        <input
+          type="number"
+          min={3}
+          max={6}
+          value={numQuestions}
+          onChange={(e) => setNumQuestions(parseInt(e.target.value, 10))}
+        />
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          checked={allowMultiple}
+          onChange={(e) => setAllowMultiple(e.target.checked)}
+        />
+        Allow multiple answers
+      </label>
       <button onClick={handleStart} disabled={!url}>
         Generate
       </button>
