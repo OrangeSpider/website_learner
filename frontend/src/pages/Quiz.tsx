@@ -6,17 +6,28 @@ export default function Quiz() {
   const { state } = useLocation() as { state: { quiz: Question[] } };
   const quiz = state?.quiz || [];
   const [step, setStep] = useState(0);
-  const [answers, setAnswers] = useState<number[]>([]);
-  const [choice, setChoice] = useState<number | null>(null);
+  const [answers, setAnswers] = useState<number[][]>([]);
+  const [choice, setChoice] = useState<number[]>([]);
   const navigate = useNavigate();
 
   const question = quiz[step];
+  const toggleChoice = (idx: number) => {
+    setChoice((prev) =>
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
+    );
+  };
 
   const handleNext = () => {
-    if (choice === null) return;
+    const question = quiz[step];
+    if (question.multiple) {
+      if (choice.length === 0) return;
+    } else {
+      if (choice.length !== 1) return;
+    }
+
     const newAnswers = [...answers, choice];
     setAnswers(newAnswers);
-    setChoice(null);
+    setChoice([]);
     if (step + 1 < quiz.length) {
       setStep(step + 1);
     } else {
@@ -35,10 +46,16 @@ export default function Quiz() {
           <li key={idx} style={{ marginBottom: "8px" }}>
             <label>
               <input
-                type="radio"
+                type={question.multiple ? "checkbox" : "radio"}
                 name="option"
-                checked={choice === idx}
-                onChange={() => setChoice(idx)}
+                checked={
+                  question.multiple ? choice.includes(idx) : choice[0] === idx
+                }
+                onChange={() =>
+                  question.multiple
+                    ? toggleChoice(idx)
+                    : setChoice([idx])
+                }
               />
               {opt}
             </label>
