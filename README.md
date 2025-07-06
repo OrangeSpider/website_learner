@@ -65,3 +65,23 @@ preview`.
 Set the `OPENAI_API_KEY` environment variable before starting the backend. The
 frontend no longer prompts for a key.
 
+
+## Docker deployment
+
+The frontend and backend can run in separate containers using Docker Compose.
+Make sure the `OPENAI_API_KEY` environment variable is available in your shell so
+it is passed to the backend container.
+
+```bash
+export OPENAI_API_KEY=<your-openai-key>
+# Optional Supabase configuration
+export SUPABASE_URL=<your-supabase-url>
+export SUPABASE_API_KEY=<your-supabase-key>
+
+# Build images and start the stack
+docker compose up --build
+```
+
+The UI will be available on <http://localhost:5173> and the API on
+<http://localhost:8000>.
+
