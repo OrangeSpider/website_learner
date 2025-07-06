@@ -1,27 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../auth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
-  const API_BASE = import.meta.env.VITE_API_URL || "/api";
+  const { login } = useAuth();
 
   const handleLogin = async () => {
     setError("");
     try {
-      const response = await fetch(`${API_BASE}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
-      if (!response.ok) {
-        const text = await response.text();
-        setError(`Error ${response.status}: ${text}`);
-        return;
-      }
+      await login(email, password);
       navigate("/home");
     } catch (err) {
       if (err instanceof Error) {
