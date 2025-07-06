@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../auth";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
+  const { authFetch } = useAuth();
   const API_BASE = import.meta.env.VITE_API_URL || "/api";
 
   const handleRegister = async () => {
     setError("");
     try {
-      const response = await fetch(`${API_BASE}/register`, {
+      const response = await authFetch(`${API_BASE}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
