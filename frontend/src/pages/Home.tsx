@@ -1,5 +1,6 @@
 import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../auth";
 
 export default function Home() {
   const [url, setUrl] = useState("");
@@ -7,13 +8,13 @@ export default function Home() {
   const [allowMultiple, setAllowMultiple] = useState(false);
   const navigate = useNavigate();
   const [error, setError] = useState("");
-
+  const { authFetch } = useAuth();
   const API_BASE = import.meta.env.VITE_API_URL || "/api";
 
   const handleStart = async () => {
     setError("");
     try {
-      const response = await fetch(`${API_BASE}/quiz`, {
+      const response = await authFetch(`${API_BASE}/quiz`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
