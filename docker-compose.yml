@@ -15,7 +15,10 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        VITE_API_URL: http://backend:8000
+        # The frontend communicates with the backend through the host
+        # mapped port, so use localhost instead of the Docker service
+        # name. This avoids DNS resolution errors in the browser.
+        VITE_API_URL: http://localhost:8000
     ports:
       - "5173:5173"
     depends_on:
