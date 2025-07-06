@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .api import quiz
+from .api import quiz, user
 
 app = FastAPI()
 
@@ -19,3 +19,4 @@ async def root():
 
 
 app.include_router(quiz.router)
+app.include_router(user.router)
