@@ -66,6 +66,29 @@ Set the `OPENAI_API_KEY` environment variable before starting the backend. The
 frontend no longer prompts for a key.
 
 
+## User Management
+
+The backend includes minimal runtime-only user management endpoints. Data is
+stored only in memory and will be lost when the server restarts.
+
+### Endpoints
+
+| Method | Endpoint        | Description                                 |
+| ------ | --------------- | ------------------------------------------- |
+| POST   | `/register`     | Register a user with `email` and `password`.|
+| POST   | `/login`        | Authenticate and return an access token.    |
+| POST   | `/logout`       | Invalidate a previously issued token.       |
+| GET    | `/users`        | List registered user emails.                |
+| DELETE | `/users/{email}`| Delete the specified user.                  |
+
+### Login and Register UI
+
+Navigate to <http://localhost:5173/> and choose **Login** or **Register** from
+the landing page. These forms interact with the endpoints above. Successful
+registration redirects to the login screen. On login, you are taken to the home
+page where you can generate quizzes.
+
+
 ## Docker deployment
 
 The frontend and backend can run in separate containers using Docker Compose.
