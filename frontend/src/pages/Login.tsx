@@ -22,7 +22,7 @@ export default function Login() {
         setError(`Error ${response.status}: ${text}`);
         return;
       }
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);

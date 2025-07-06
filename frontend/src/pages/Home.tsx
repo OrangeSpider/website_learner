@@ -69,20 +69,6 @@ export default function Home() {
         Generate
       </button>
       {error && <p className="error">{error}</p>}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          marginTop: "20px",
-        }}
-      >
-        <Link to="/login" style={{ color: "#fff" }}>
-          Login
-        </Link>
-        <Link to="/register" style={{ color: "#fff" }}>
-          Register
-        </Link>
-      </div>
     </div>
   );
 }
